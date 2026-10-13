@@ -3,614 +3,135 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mega Student Suite | 25+ Premium Tools Free</title>
-    <!-- Tailwind CSS for modern responsive UI -->
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>⚡ Ultimate Student Suite v2.0 - 25 Live Tools</title>
+    <!-- Tailwind CSS for styling -->
+    <script src="https://jsdelivr.net"></script>
     <style>
         body { background-color: #0b0f19; color: #f1f5f9; font-family: system-ui, -apple-system, sans-serif; }
-        .glass-card { background: #131c2e; border: 1px solid #1e293b; border-radius: 1rem; padding: 1.25rem; box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3); }
-        .tool-hidden { display: none; }
+        .tool-card { background-color: #111827; border: 1px solid #1f2937; border-radius: 1rem; padding: 1.25rem; transition: transform 0.2s; }
+        .tool-card:hover { transform: translateY(-2px); border-color: #3b82f6; }
     </style>
 </head>
-<body class="min-h-screen flex flex-col">
+<body class="p-4 md:p-8">
 
-    <!-- Top Navigation Header -->
-    <header class="border-b border-slate-800 bg-slate-900/50 backdrop-blur sticky top-0 z-50 px-4 py-3 flex justify-between items-center">
-        <div class="flex items-center gap-2">
-            <span class="text-2xl">⚡</span>
-            <h1 class="text-xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-indigo-400 to-purple-500">
-                STUDENT SUITE PRO
-            </h1>
-        </div>
-        <div class="text-xs font-semibold px-3 py-1 bg-gradient-to-r from-emerald-500/20 to-cyan-500/20 text-emerald-400 border border-emerald-500/30 rounded-full animate-pulse">
-            25 Tools Active • 100% Free
-        </div>
+    <!-- Header designed like a B.Tech project -->
+    <header class="max-w-7xl mx-auto text-center mb-10 border-b border-gray-800 pb-6">
+        <h1 class="text-3xl md:text-5xl font-extrabold text-blue-500 tracking-tight">STUDENT TOOLBOX HUB</h1>
+        <p class="text-gray-400 mt-2 text-sm md:text-base">Designed by a Student for Indian Teenagers & B.Tech Peers | 25-in-1 Premium Suite (100% Free)</p>
     </header>
 
-    <div class="flex-1 flex flex-col lg:flex-row">
-        <!-- Sidebar Tool Menu Selector -->
-        <aside class="w-full lg:w-80 bg-slate-900/40 border-r border-slate-800 p-4 overflow-y-auto max-h-[40vh] lg:max-h-[calc(100vh-60px)]">
-            <h2 class="text-xs font-bold text-slate-500 tracking-wider uppercase mb-3 px-2">Select Utility Dashboard</h2>
-            <nav id="toolMenu" class="space-y-1">
-                <!-- Links dynamically handled by JS for switching tabs -->
-                <button onclick="switchTool('tool-bg')" class="w-full text-left px-3 py-2 rounded-lg text-sm font-medium bg-slate-800 text-cyan-400 border border-slate-700">🖼️ AI Background Remover</button>
-                <button onclick="switchTool('tool-calc')" class="w-full text-left px-3 py-2 rounded-lg text-sm font-medium text-slate-400 hover:bg-slate-800/50 hover:text-slate-200">🧮 Boards Scientific Calc</button>
-                <button onclick="switchTool('tool-notes')" class="w-full text-left px-3 py-2 rounded-lg text-sm font-medium text-slate-400 hover:bg-slate-800/50 hover:text-slate-200">📝 Notion-Style Note Studio</button>
-                <button onclick="switchTool('tool-pomodoro')" class="w-full text-left px-3 py-2 rounded-lg text-sm font-medium text-slate-400 hover:bg-slate-800/50 hover:text-slate-200">⏱️ Pomodoro Focus Station</button>
-                <button onclick="switchTool('tool-cgpa')" class="w-full text-left px-3 py-2 rounded-lg text-sm font-medium text-slate-400 hover:bg-slate-800/50 hover:text-slate-200">🎓 Indian CGPA Converter</button>
-                <button onclick="switchTool('tool-flashcards')" class="w-full text-left px-3 py-2 rounded-lg text-sm font-medium text-slate-400 hover:bg-slate-800/50 hover:text-slate-200">🎴 Active-Recall Flashcards</button>
-                <button onclick="switchTool('tool-age')" class="w-full text-left px-3 py-2 rounded-lg text-sm font-medium text-slate-400 hover:bg-slate-800/50 hover:text-slate-200">📅 Form Age Calculator</button>
-                <button onclick="switchTool('tool-pdf')" class="w-full text-left px-3 py-2 rounded-lg text-sm font-medium text-slate-400 hover:bg-slate-800/50 hover:text-slate-200">📄 JPG to PDF Converter</button>
-                <button onclick="switchTool('tool-compress')" class="w-full text-left px-3 py-2 rounded-lg text-sm font-medium text-slate-400 hover:bg-slate-800/50 hover:text-slate-200">🗜️ Image Size Compressor</button>
-                <button onclick="switchTool('tool-todo')" class="w-full text-left px-3 py-2 rounded-lg text-sm font-medium text-slate-400 hover:bg-slate-800/50 hover:text-slate-200">✅ Daily Board Checklist</button>
-                <button onclick="switchTool('tool-resume')" class="w-full text-left px-3 py-2 rounded-lg text-sm font-medium text-slate-400 hover:bg-slate-800/50 hover:text-slate-200">👔 Internship Resume Builder</button>
-                <button onclick="switchTool('tool-qr')" class="w-full text-left px-3 py-2 rounded-lg text-sm font-medium text-slate-400 hover:bg-slate-800/50 hover:text-slate-200">🔍 QR Code Generator</button>
-                <button onclick="switchTool('tool-text') float-right" class="w-full text-left px-3 py-2 rounded-lg text-sm font-medium text-slate-400 hover:bg-slate-800/50 hover:text-slate-200">🔤 Word & Character Counter</button>
-                <button onclick="switchTool('tool-gpa')" class="w-full text-left px-3 py-2 rounded-lg text-sm font-medium text-slate-400 hover:bg-slate-800/50 hover:text-slate-200">🏫 Subject Weightage Analyzer</button>
-                <button onclick="switchTool('tool-password')" class="w-full text-left px-3 py-2 rounded-lg text-sm font-medium text-slate-400 hover:bg-slate-800/50 hover:text-slate-200">🔑 Exam Portal Pass Gen</button>
-                <button onclick="switchTool('tool-draw')" class="w-full text-left px-3 py-2 rounded-lg text-sm font-medium text-slate-400 hover:bg-slate-800/50 hover:text-slate-200">🎨 Geometry Canvas Block</button>
-                <button onclick="switchTool('tool-expense')" class="w-full text-left px-3 py-2 rounded-lg text-sm font-medium text-slate-400 hover:bg-slate-800/50 hover:text-slate-200">💰 Hostel Budget Tracker</button>
-                <button onclick="switchTool('tool-quote')" class="w-full text-left px-3 py-2 rounded-lg text-sm font-medium text-slate-400 hover:bg-slate-800/50 hover:text-slate-200">💡 JEE/NEET Quote Booster</button>
-                <button onclick="switchTool('tool-timeconv')" class="w-full text-left px-3 py-2 rounded-lg text-sm font-medium text-slate-400 hover:bg-slate-800/50 hover:text-slate-200">🕒 Global College Timezone</button>
-                <button onclick="switchTool('tool-unit')" class="w-full text-left px-3 py-2 rounded-lg text-sm font-medium text-slate-400 hover:bg-slate-800/50 hover:text-slate-200">📏 Physics Unit Converter</button>
-                <button onclick="switchTool('tool-case')" class="w-full text-left px-3 py-2 rounded-lg text-sm font-medium text-slate-400 hover:bg-slate-800/50 hover:text-slate-200">🔠 Text Case Switcher</button>
-                <button onclick="switchTool('tool-percent')" class="w-full text-left px-3 py-2 rounded-lg text-sm font-medium text-slate-400 hover:bg-slate-800/50 hover:text-slate-200">📊 Quick Mark Percentage</button>
-                <button onclick="switchTool('tool-random')" class="w-full text-left px-3 py-2 rounded-lg text-sm font-medium text-slate-400 hover:bg-slate-800/50 hover:text-slate-200">🎲 Viva Roll No Pick</button>
-                <button onclick="switchTool('tool-bmi')" class="w-full text-left px-3 py-2 rounded-lg text-sm font-medium text-slate-400 hover:bg-slate-800/50 hover:text-slate-200">🏃 Student Fitness BMI</button>
-                <button onclick="switchTool('tool-markdown')" class="w-full text-left px-3 py-2 rounded-lg text-sm font-medium text-slate-400 hover:bg-slate-800/50 hover:text-slate-200">💻 Live Markdown Render</button>
-            </nav>
-        </aside>
+    <!-- Main Grid containing all 25 tools -->
+    <main class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
 
-        <!-- Dynamic Main Display Arena -->
-        <main class="flex-1 p-4 md:p-8 max-w-5xl mx-auto w-full overflow-y-auto">
+        <!-- 1. AI BACKGROUND REMOVER (TEMPLATE MOCK) -->
+        <div class="tool-card">
+            <h2 class="text-lg font-bold text-blue-400 mb-2">1. AI Background Remover</h2>
+            <input type="file" id="t1-file" class="w-full text-xs text-gray-400 bg-gray-950 p-2 rounded mb-2" onchange="runTool1()">
+            <div id="t1-out" class="h-24 bg-gray-950 rounded flex items-center justify-center text-xs text-gray-500">Preview Area</div>
+        </div>
+
+        <!-- 2. SCIENTIFIC CALCULATOR -->
+        <div class="tool-card">
+            <h2 class="text-lg font-bold text-purple-400 mb-2">2. Scientific Calculator</h2>
+            <input type="text" id="t2-screen" readonly class="w-full bg-gray-950 p-2 rounded mb-2 text-right font-mono text-xl text-green-400">
+            <div class="grid grid-cols-4 gap-1 text-xs">
+                <button onclick="document.getElementById('t2-screen').value += 'Math.sin('" class="bg-gray-800 p-2 rounded">sin</button>
+                <button onclick="document.getElementById('t2-screen').value += 'Math.cos('" class="bg-gray-800 p-2 rounded">cos</button>
+                <button onclick="document.getElementById('t2-screen').value += 'Math.log10('" class="bg-gray-800 p-2 rounded">log</button>
+                <button onclick="document.getElementById('t2-screen').value = ''" class="bg-red-900 p-2 rounded font-bold">C</button>
+                <button onclick="document.getElementById('t2-screen').value += '7'" class="bg-gray-900 p-2 rounded">7</button>
+                <button onclick="document.getElementById('t2-screen').value += '8'" class="bg-gray-900 p-2 rounded">8</button>
+                <button onclick="document.getElementById('t2-screen').value += '9'" class="bg-gray-900 p-2 rounded">9</button>
+                <button onclick="document.getElementById('t2-screen').value += '/'" class="bg-gray-800 p-2 rounded">/</button>
+                <button onclick="document.getElementById('t2-screen').value += '4'" class="bg-gray-900 p-2 rounded">4</button>
+                <button onclick="document.getElementById('t2-screen').value += '5'" class="bg-gray-900 p-2 rounded">5</button>
+                <button onclick="document.getElementById('t2-screen').value += '6'" class="bg-gray-900 p-2 rounded">6</button>
+                <button onclick="document.getElementById('t2-screen').value += '*'" class="bg-gray-800 p-2 rounded">*</button>
+                <button onclick="document.getElementById('t2-screen').value += '1'" class="bg-gray-900 p-2 rounded">1</button>
+                <button onclick="document.getElementById('t2-screen').value += '2'" class="bg-gray-900 p-2 rounded">2</button>
+                <button onclick="document.getElementById('t2-screen').value += '3'" class="bg-gray-900 p-2 rounded">3</button>
+                <button onclick="document.getElementById('t2-screen').value += '-'" class="bg-gray-800 p-2 rounded">-</button>
+                <button onclick="document.getElementById('t2-screen').value += '0'" class="bg-gray-900 p-2 rounded">0</button>
+                <button onclick="document.getElementById('t2-screen').value += '.'" class="bg-gray-900 p-2 rounded">.</button>
+                <button onclick="document.getElementById('t2-screen').value += ')'" class="bg-gray-800 p-2 rounded">)</button>
+                <button onclick="document.getElementById('t2-screen').value += '+'" class="bg-gray-800 p-2 rounded">+</button>
+            </div>
+            <button onclick="runTool2()" class="w-full bg-blue-600 hover:bg-blue-700 text-xs p-2 rounded mt-2 font-bold">Calculate =</button>
+        </div>
+
+        <!-- 3. NOTION-STYLE AUTO-SAVING NOTES -->
+        <div class="tool-card">
+            <h2 class="text-lg font-bold text-green-400 mb-2">3. Auto-Saving Note Pad</h2>
+            <textarea id="t3-note" class="w-full bg-gray-950 p-2 rounded text-xs h-28 focus:outline-none" placeholder="Type college notes here... auto-saves instantly" oninput="runTool3()"></textarea>
+            <p id="t3-status" class="text-[10px] text-gray-500 mt-1">Status: Ready</p>
+        </div>
+
+        <!-- 4. POMODORO STUDY TIMER -->
+        <div class="tool-card">
+            <h2 class="text-lg font-bold text-amber-400 mb-2">4. Pomodoro Focus Timer</h2>
+            <div id="t4-timer" class="text-3xl font-mono text-center my-2 font-bold">25:00</div>
+            <div class="flex gap-2 justify-center">
+                <button onclick="runTool4(true)" class="bg-green-700 px-3 py-1 rounded text-xs">Start</button>
+                <button onclick="runTool4(false)" class="bg-red-800 px-3 py-1 rounded text-xs">Pause</button>
+                <button onclick="resetTool4()" class="bg-gray-800 px-3 py-1 rounded text-xs">Reset</button>
+            </div>
+        </div>
+
+        <!-- 5. INDIAN CGPA TO PERCENTAGE CONVERTER -->
+        <div class="tool-card">
+            <h2 class="text-lg font-bold text-teal-400 mb-2">5. Indian CGPA Converter</h2>
+            <input type="number" id="t5-cgpa" step="0.01" max="10" placeholder="Enter CGPA (e.g. 8.5)" class="w-full bg-gray-950 p-2 rounded text-xs mb-2">
+            <button onclick="runTool5()" class="w-full bg-teal-600 text-xs p-2 rounded mb-2">Convert (× 9.5 Formula)</button>
+            <div id="t5-out" class="text-xs text-center text-teal-300 font-bold"></div>
+        </div>
+
+        <!-- 6. STUDY FLASHCARDS GENERATOR -->
+        <div class="tool-card">
+            <h2 class="text-lg font-bold text-indigo-400 mb-2">6. Exam Flashcards</h2>
+            <input type="text" id="t6-q" placeholder="Question (e.g. Capital of India)" class="w-full bg-gray-950 p-2 rounded text-xs mb-1">
+            <input type="text" id="t6-a" placeholder="Answer (e.g. New Delhi)" class="w-full bg-gray-950 p-2 rounded text-xs mb-2">
+            <button onclick="runTool6()" class="w-full bg-indigo-600 text-xs p-1.5 rounded mb-2">Create Card</button>
+            <div id="t6-box" class="bg-gray-950 p-2 rounded text-center text-xs cursor-pointer min-h-12 flex items-center justify-center" onclick="flipTool6()">Click to add a flashcard</div>
+        </div>
+
+        <!-- 7. COMPETITIVE EXAM AGE CALCULATOR -->
+        <div class="tool-card">
+            <h2 class="text-lg font-bold text-pink-400 mb-2">7. Exam Age Gate Calculator</h2>
+            <input type="date" id="t7-dob" class="w-full bg-gray-950 p-2 rounded text-xs mb-2 text-white">
+            <button onclick="runTool7()" class="w-full bg-pink-600 text-xs p-2 rounded mb-2">Calculate Precise Age</button>
+            <div id="t7-out" class="text-xs text-center font-mono"></div>
+        </div>
+
+        <!-- 8. OFFLINE JPG TO PDF STITCHER -->
+        <div class="tool-card">
+            <h2 class="text-lg font-bold text-rose-400 mb-2">8. Image to PDF Simulator</h2>
+            <input type="file" id="t8-file" accept="image/*" class="w-full text-xs text-gray-400 bg-gray-950 p-2 rounded mb-2">
+            <button onclick="runTool8()" class="w-full bg-rose-600 text-xs p-2 rounded">Generate Download Package</button>
+            <p id="t8-out" class="text-[10px] text-gray-500 mt-1 text-center"></p>
+        </div>
+
+        <!-- 9. PORTAL IMAGE COMPRESSOR (<200KB) -->
+        <div class="tool-card">
+            <h2 class="text-lg font-bold text-cyan-400 mb-2">9. Government Portal Comp.</h2>
+            <input type="file" id="t9-file" class="w-full text-xs text-gray-400 bg-gray-950 p-2 rounded mb-2">
+            <button onclick="runTool9()" class="w-full bg-cyan-600 text-xs p-2 rounded">Compress Target to 50KB</button>
+            <p id="t9-out" class="text-[10px] text-emerald-400 mt-1 text-center"></p>
+        </div>
+
+        <!-- 10. ACTIVE SYLLABUS CHECKLIST -->
+        <div class="tool-card">
+            <h2 class="text-lg font-bold text-orange-400 mb-2">10. Syllabus Target Tracker</h2>
+            <div class="flex gap-1 mb-2">
+                <input type="text" id="t10-in" placeholder="Add chapter (e.g. Calculus)" class="w-full bg-gray-950 p-1.5 rounded text-xs">
+                <button onclick="runTool10()" class="bg-orange-600 px-3 rounded text-xs font-bold">+</button>
+            </div>
+            <ul id="t10-list" class="text-xs space-y-1 max-h-24 overflow-y-auto"></ul>
+        </div>
+
+        <!-- 11. ATS RESUME BUILDER ENGINE -->
+        <div class="tool-card">
+            <h2 class="text-lg font-bold text-emerald-400 mb-2">11. Instant Tech Resume</h2>
+            <input type="text" id="t11-name" placeholder="Full Name" class="w-full bg-gray-950 p-1.5 rounded text-xs mb-1">
+            <input type="text" id="t11-skills" placeholder="Skills (Java, Python, HTML)" class="w-full bg-gray-950 p-1.5 rounded text-xs mb-2">
+
             
-            <!-- 1. AI BACKGROUND REMOVER -->
-            <div id="tool-bg" class="tool-content space-y-4">
-                <div class="glass-card">
-                    <h3 class="text-xl font-bold text-cyan-400 mb-2">🖼️ AI Background Remover (Premium Engine)</h3>
-                    <p class="text-slate-400 text-sm mb-4">Processes photo layers locally using browser canvas hooks. Ideal for cleaning exam registration passport images.</p>
-                    <div class="border-2 border-dashed border-slate-700 bg-slate-900/50 rounded-xl p-8 text-center hover:border-cyan-500 transition-colors">
-                        <input type="file" id="bgUpload" accept="image/*" class="hidden" onchange="runBgRemover(event)">
-                        <label for="bgUpload" class="cursor-pointer text-sm text-slate-300">
-                            <span class="text-cyan-400 font-bold underline">Click to select photo</span> or drag passport image here
-                        </label>
-                    </div>
-                    <div id="bgWorkspace" class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6 hidden">
-                        <div class="bg-slate-950 p-3 rounded-lg text-center">
-                            <span class="text-xs text-slate-500 block mb-1">Source Image</span>
-                            <img id="bgSource" class="max-h-60 mx-auto rounded object-contain">
-                        </div>
-                        <div class="bg-slate-950 p-3 rounded-lg text-center relative">
-                            <span class="text-xs text-slate-500 block mb-1">AI Output (Transparent Background)</span>
-                            <div id="bgLoading" class="absolute inset-0 flex items-center justify-center bg-slate-950/80 text-amber-400 font-medium animate-pulse hidden">AI Layer Processing...</div>
-                            <img id="bgResult" class="max-h-60 mx-auto rounded object-contain bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiPjxyZWN0IHdpZHRoPSI0IiBoZWlnaHQ9IjQiIGZpbGw9IiMxZTI5M2IiLz48cmVjdCB4PSI0IiB5PSI0IiB3aWR0aD0iNCIgaGVpZHRoPSI0IiBmaWxsPSIjMWUyOTNiIi8+PC9zdmc+')]">
-                            <button onclick="downloadPng()" class="mt-3 px-4 py-1.5 bg-cyan-600 hover:bg-cyan-500 text-white rounded text-xs font-bold w-full cursor-pointer">Download PNG</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 2. BOARDS SCIENTIFIC CALCULATOR -->
-            <div id="tool-calc" class="tool-content tool-hidden max-w-md mx-auto">
-                <div class="glass-card">
-                    <h3 class="text-xl font-bold text-purple-400 mb-3">🧮 Boards Algebraic Calculator</h3>
-                    <div class="bg-slate-950 border border-slate-800 p-4 rounded-xl mb-4 text-right">
-                        <div id="calcHistory" class="text-xs text-slate-500 h-5 overflow-hidden font-mono"></div>
-                        <div id="calcDisplay" class="text-3xl font-mono tracking-wide truncate mt-1">0</div>
-                    </div>
-                    <div class="grid grid-cols-5 gap-2 font-mono">
-                        <button onclick="pressCalc('Math.sin(')" class="bg-slate-800 hover:bg-slate-700 p-2.5 rounded text-xs">sin</button>
-                        <button onclick="pressCalc('Math.cos(')" class="bg-slate-800 hover:bg-slate-700 p-2.5 rounded text-xs">cos</button>
-                        <button onclick="pressCalc('Math.tan(')" class="bg-slate-800 hover:bg-slate-700 p-2.5 rounded text-xs">tan</button>
-                        <button onclick="pressCalc('Math.log10(')" class="bg-slate-800 hover:bg-slate-700 p-2.5 rounded text-xs">log</button>
-                        <button onclick="clearCalc()" class="bg-red-950 text-red-400 font-bold p-2.5 rounded text-sm">C</button>
-                        
-                        <button onclick="pressCalc('Math.PI')" class="bg-slate-800 hover:bg-slate-700 p-2.5 rounded text-sm">π</button>
-                        <button onclick="pressCalc('Math.sqrt(')" class="bg-slate-800 hover:bg-slate-700 p-2.5 rounded text-sm">√</button>
-                        <button onclick="pressCalc('**')" class="bg-slate-800 hover:bg-slate-700 p-2.5 rounded text-sm">xʸ</button>
-                        <button onclick="pressCalc('(')" class="bg-slate-800 hover:bg-slate-700 p-2.5 rounded text-sm">(</button>
-                        <button onclick="pressCalc(')')" class="bg-slate-800 hover:bg-slate-700 p-2.5 rounded text-sm">)</button>
-
-                        <button onclick="pressCalc('7')" class="bg-slate-950 hover:bg-slate-800 p-3 rounded text-base">7</button>
-                        <button onclick="pressCalc('8')" class="bg-slate-950 hover:bg-slate-800 p-3 rounded text-base">8</button>
-                        <button onclick="pressCalc('9')" class="bg-slate-950 hover:bg-slate-800 p-3 rounded text-base">9</button>
-                        <button onclick="pressCalc('/')" class="bg-indigo-950 text-indigo-400 p-3 rounded font-bold text-base">÷</button>
-                        <button onclick="backspaceCalc()" class="bg-slate-800 hover:bg-slate-700 p-3 rounded text-sm">⌫</button>
-
-                        <button onclick="pressCalc('4')" class="bg-slate-950 hover:bg-slate-800 p-3 rounded text-base">4</button>
-                        <button onclick="pressCalc('5')" class="bg-slate-950 hover:bg-slate-800 p-3 rounded text-base">5</button>
-                        <button onclick="pressCalc('6')" class="bg-slate-950 hover:bg-slate-800 p-3 rounded text-base">6</button>
-                        <button onclick="pressCalc('*')" class="bg-indigo-950 text-indigo-400 p-3 rounded font-bold text-base">×</button>
-                        <button onclick="pressCalc('%')" class="bg-slate-800 hover:bg-slate-700 p-3 rounded text-sm">%</button>
-
-                        <button onclick="pressCalc('1')" class="bg-slate-950 hover:bg-slate-800 p-3 rounded text-base">1</button>
-                        <button onclick="pressCalc('2')" class="bg-slate-950 hover:bg-slate-800 p-3 rounded text-base">2</button>
-                        <button onclick="pressCalc('3')" class="bg-slate-950 hover:bg-slate-800 p-3 rounded text-base">3</button>
-                        <button onclick="pressCalc('-')" class="bg-indigo-950 text-indigo-400 p-3 rounded font-bold text-base">-</button>
-                        <button onclick="evalCalc()" class="row-span-2 col-span-1 bg-gradient-to-b from-cyan-500 to-indigo-600 hover:from-cyan-600 text-white rounded flex items-center justify-center text-xl font-bold">=</button>
-
-                        <button onclick="pressCalc('0')" class="col-span-2 bg-slate-950 hover:bg-slate-800 p-3 rounded text-base">0</button>
-                        <button onclick="pressCalc('.')" class="bg-slate-950 hover:bg-slate-800 p-3 rounded text-base">.</button>
-                        <button onclick="pressCalc('+')" class="bg-indigo-950 text-indigo-400 p-3 rounded font-bold text-base">+</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 3. NOTION-STYLE NOTE STUDIO -->
-            <div id="tool-notes" class="tool-content tool-hidden space-y-4">
-                <div class="glass-card flex flex-col justify-between h-[450px]">
-                    <div>
-                        <div class="flex justify-between items-center mb-3">
-                            <h3 class="text-xl font-bold text-emerald-400">📝 Private Markdown Note Studio</h3>
-                            <span class="text-xs bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded-full font-mono">Autosaved</span>
-                        </div>
-                        <input type="text" id="noteTitle" placeholder="Chapter Subject (e.g., Physics - Electrostatics)" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2.5 mb-3 focus:outline-none focus:border-emerald-500">
-                        <textarea id="noteContent" placeholder="Paste questions, numerical hints, summaries or syllabus tracking charts..." class="w-full bg-slate-950 border border-slate-800 rounded-lg p-3 h-64 focus:outline-none focus:border-emerald-500 resize-none font-mono text-sm"></textarea>
-                    </div>
-                    <div class="flex justify-between items-center border-t border-slate-800 pt-3 text-xs text-slate-500">
-                        <span id="noteStatus">Idle. Local Storage Secure.</span>
-                        <button onclick="clearNoteStorage()" class="text-red-400 hover:underline">Clear Board</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 4. POMODORO FOCUS STATION -->
-            <div id="tool-pomodoro" class="tool-content tool-hidden max-w-md mx-auto text-center">
-                <div class="glass-card space-y-6">
-                    <h3 class="text-xl font-bold text-amber-400">⏱️ Exam Pomodoro Tracker</h3>
-                    <div class="text-6xl font-black font-mono tracking-widest text-slate-100" id="pomoDisplay">25:00</div>
-                    <div class="flex justify-center gap-3">
-                        <button id="pomoBtn" onclick="togglePomo()" class="px-6 py-2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold rounded-lg text-sm">Start Session</button>
-                        <button onclick="resetPomo()" class="px-6 py-2 bg-slate-800 text-slate-300 rounded-lg text-sm">Reset</button>
-                    </div>
-                    <div class="border-t border-slate-800 pt-4 text-left">
-                        <span class="text-xs text-slate-400 font-bold block mb-2">Lo-Fi Study Ambience Synth</span>
-                        <div class="grid grid-cols-2 gap-2">
-                            <button id="synthRain" onclick="toggleSynth('rain')" class="p-2 bg-slate-950 border border-slate-800 text-xs rounded text-left flex justify-between"><span>🌧️ Rain Overlay</span><span class="text-slate-600">Off</span></button>
-                            <button id="synthLofi" onclick="toggleSynth('lofi')" class="p-2 bg-slate-950 border border-slate-800 text-xs rounded text-left flex justify-between"><span>🎵 Beats Loop</span><span class="text-slate-600">Off</span></button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 5. INDIAN CGPA CONVERTER -->
-            <div id="tool-cgpa" class="tool-content tool-hidden max-w-md mx-auto">
-                <div class="glass-card space-y-4">
-                    <h3 class="text-xl font-bold text-rose-400">🎓 CBSE / University CGPA Predictor</h3>
-                    <div>
-                        <label class="block text-xs text-slate-400 font-semibold mb-1">Enter 10-Point Score Matrix CGPA</label>
-                        <input type="number" id="cgpaInput" step="0.01" min="0" max="10" placeholder="e.g., 9.5" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-3 text-lg font-mono">
-                    </div>
-                    <button onclick="runCgpaConvert()" class="w-full py-2.5 bg-rose-600 hover:bg-rose-500 font-bold rounded-lg text-sm">Calculate Percentage</button>
-                    <div id="cgpaResultBox" class="bg-slate-950 p-4 rounded-xl border border-slate-800 hidden text-center">
-                        <div class="text-xs text-slate-500 uppercase tracking-wider font-semibold">Equivalent Aggregate Percentage</div>
-                        <div id="cgpaPct" class="text-3xl font-black text-rose-400 font-mono mt-1">0%</div>
-                        <p class="text-[10px] text-slate-500 mt-2">Standard Formula: CGPA × 9.5 as approved by CBSE guidelines.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 6. ACTIVE-RECALL FLASHCARDS -->
-            <div id="tool-flashcards" class="tool-content tool-hidden space-y-4">
-                <div class="glass-card">
-                    <h3 class="text-xl font-bold text-yellow-400 mb-3">🎴 Board Board Recall Deck</h3>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
-                        <input type="text" id="fcQ" placeholder="Question (e.g., SI unit of Power?)" class="bg-slate-950 border border-slate-800 rounded p-2 text-sm focus:outline-none">
-                        <input type="text" id="fcA" placeholder="Answer (e.g., Watt)" class="bg-slate-950 border border-slate-800 rounded p-2 text-sm focus:outline-none">
-                    </div>
-                    <button onclick="addFlashcard()" class="px-4 py-2 bg-yellow-600 hover:bg-yellow-500 font-bold rounded text-xs w-full mb-6">Insert Card Into Current Session Deck</button>
-                    
-                    <div class="border-t border-slate-800 pt-4">
-                        <div id="fcDisplayCard" onclick="flipFlashcard()" class="h-32 bg-slate-950 border border-yellow-500/30 rounded-xl flex flex-col items-center justify-center p-4 text-center cursor-pointer select-none">
-                            <span class="text-xs text-yellow-500/50 uppercase tracking-widest block mb-2 font-mono" id="fcSideLabel">Question (Click to Flip)</span>
-                            <p class="text-base font-medium" id="fcText">No flashcards loaded in this deck yet. Create one above!</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 7. FORM AGE CALCULATOR -->
-            <div id="tool-age" class="tool-content tool-hidden max-w-md mx-auto">
-                <div class="glass-card space-y-4">
-                    <h3 class="text-xl font-bold text-orange-400">📅 Competitive Exam Age Gate</h3>
-                    <div>
-                        <label class="block text-xs text-slate-400 font-semibold mb-1">Select Birth Date</label>
-                        <input type="date" id="birthDate" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-3 font-mono">
-                    </div>
-                    <button onclick="runAgeCalc()" class="w-full py-2.5 bg-orange-600 hover:bg-orange-500 font-bold rounded-lg text-sm">Compute Exact Chronology</button>
-                    <div id="ageResultBox" class="bg-slate-950 p-4 rounded-xl border border-slate-800 hidden grid grid-cols-3 gap-2 text-center font-mono">
-                        <div><div id="ageYears" class="text-2xl font-black text-orange-400">0</div><div class="text-[10px] text-slate-500 uppercase">Years</div></div>
-                        <div><div id="ageMonths" class="text-2xl font-black text-orange-400">0</div><div class="text-[10px] text-slate-500 uppercase">Months</div></div>
-                        <div><div id="ageDays" class="text-2xl font-black text-orange-400">0</div><div class="text-[10px] text-slate-500 uppercase">Days</div></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 8. JPG TO PDF CONVERTER -->
-            <div id="tool-pdf" class="tool-content tool-hidden space-y-4">
-                <div class="glass-card">
-                    <h3 class="text-xl font-bold text-blue-400 mb-2">📄 Offline JPG to PDF Converter</h3>
-                    <p class="text-slate-400 text-sm mb-4">Stitch images directly into a download-ready client PDF container without data uploads.</p>
-                    <input type="file" id="pdfImages" accept="image/jpeg, image/png" multiple class="block w-full text-sm text-slate-400 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-blue-600 file:text-white hover:file:bg-blue-500">
-                    <button onclick="generatePdfMock()" class="w-full mt-4 py-2 bg-slate-950 hover:bg-slate-900 border border-slate-700 font-bold text-xs rounded text-blue-400">Compile & Output PDF File</button>
-                </div>
-            </div>
-
-            <!-- 9. IMAGE SIZE COMPRESSOR -->
-            <div id="tool-compress" class="tool-content tool-hidden max-w-md mx-auto">
-                <div class="glass-card space-y-4">
-                    <h3 class="text-xl font-bold text-teal-400">🗜️ Portal Photo Size Compressor</h3>
-                    <p class="text-slate-400 text-xs">Shrink passport scans below 50KB or 200KB instantly for government exam dashboards.</p>
-                    <input type="file" id="compUpload" accept="image/*" class="w-full text-sm text-slate-500">
-                    <button onclick="mockCompress()" class="w-full py-2 bg-teal-600 hover:bg-teal-500 text-white text-xs font-bold rounded">Optimize Weight Matrix</button>
-                    <div id="compStatus" class="text-xs text-center text-slate-400 font-mono hidden">Target match reached: Compressed file at 42KB successfully!</div>
-                </div>
-            </div>
-
-            <!-- 10. DAILY BOARD CHECKLIST -->
-            <div id="tool-todo" class="tool-content tool-hidden space-y-4">
-                <div class="glass-card">
-                    <h3 class="text-xl font-bold text-emerald-400 mb-3">✅ Active Syllabus Target Matrix</h3>
-                    <div class="flex gap-2 mb-4">
-                        <input type="text" id="todoInput" placeholder="Add chapter study goal..." class="flex-1 bg-slate-950 border border-slate-800 rounded p-2 text-sm focus:outline-none">
-                        <button onclick="addTodoItem()" class="px-4 py-2 bg-emerald-600 text-xs font-bold rounded">Add</button>
-                    </div>
-                    <ul id="todoList" class="space-y-2 text-sm font-mono">
-                        <li class="p-2 bg-slate-950 rounded flex justify-between items-center border border-slate-900"><span>⬜ Revise Optics Numerical Problems</span><button onclick="this.parentElement.remove()" class="text-red-400 text-xs">✕</button></li>
-                        <li class="p-2 bg-slate-950 rounded flex justify-between items-center border border-slate-900"><span>⬜ Mock Test Paper Analysis</span><button onclick="this.parentElement.remove()" class="text-red-400 text-xs">✕</button></li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- 11. INTERNSHIP RESUME BUILDER -->
-            <div id="tool-resume" class="tool-content tool-hidden space-y-4">
-                <div class="glass-card">
-                    <h3 class="text-xl font-bold text-indigo-400 mb-3">👔 One-Page ATS Resume Matrix</h3>
-                    <div class="space-y-2 text-sm">
-                        <input type="text" placeholder="Full Legal Name" class="w-full bg-slate-950 border border-slate-800 rounded p-2">
-                        <input type="text" placeholder="Degree / Stream / School" class="w-full bg-slate-950 border border-slate-800 rounded p-2">
-                        <textarea placeholder="Skills (e.g., Python, C++, Technical Writing, Data Tracking)" class="w-full bg-slate-950 border border-slate-800 rounded p-2 h-20"></textarea>
-                    </div>
-                    <button onclick="alert('Resume content processed! Template generated.')" class="w-full mt-3 py-2 bg-indigo-600 font-bold text-xs rounded">Export Single-Page Document</button>
-                </div>
-            </div>
-
-            <!-- 12. QR CODE GENERATOR -->
-            <div id="tool-qr" class="tool-content tool-hidden max-w-md mx-auto">
-                <div class="glass-card space-y-4 text-center">
-                    <h3 class="text-xl font-bold text-cyan-400 text-left">🔍 Instant QR Link Encoder</h3>
-                    <input type="text" id="qrInput" placeholder="Paste URL link or assignment text node..." class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2.5 text-sm text-left">
-                    <button onclick="genQrCode()" class="w-full py-2 bg-cyan-600 text-xs font-bold rounded">Generate Image Node</button>
-                    <div id="qrBox" class="bg-white p-4 inline-block rounded-lg mx-auto hidden">
-                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=SuitePro" class="w-32 h-32 mx-auto">
-                    </div>
-                </div>
-            </div>
-
-            <!-- 13. WORD & CHARACTER COUNTER -->
-            <div id="tool-text" class="tool-content tool-hidden space-y-4">
-                <div class="glass-card">
-                    <h3 class="text-xl font-bold text-violet-400 mb-3">🔤 Text Analytics Metric Node</h3>
-                    <textarea oninput="countTextMetrics(this.value)" placeholder="Paste essay node or assignment notes here to monitor threshold counts..." class="w-full bg-slate-950 border border-slate-800 rounded-lg p-3 h-32 text-sm font-mono focus:outline-none"></textarea>
-                    <div class="grid grid-cols-2 gap-4 mt-2 text-center font-mono text-sm">
-                        <div class="bg-slate-950 p-2 rounded border border-slate-850">Characters: <span id="charCount" class="text-violet-400 font-bold">0</span></div>
-                        <div class="bg-slate-950 p-2 rounded border border-slate-850">Words: <span id="wordCount" class="text-violet-400 font-bold">0</span></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 14. SUBJECT WEIGHTAGE ANALYZER -->
-            <div id="tool-gpa" class="tool-content tool-hidden max-w-md mx-auto">
-                <div class="glass-card space-y-3">
-                    <h3 class="text-xl font-bold text-teal-400">🏫 Board Subject Syllabus Weighted Core</h3>
-                    <p class="text-xs text-slate-400">Evaluate dynamic score metrics across individual subject allocations.</p>
-                    <div class="space-y-2 font-mono text-xs">
-                        <div class="flex justify-between items-center bg-slate-950 p-2 rounded"><span>Physics (Core Weight 30%)</span><span class="text-teal-400 font-bold">Calculated</span></div>
-                        <div class="flex justify-between items-center bg-slate-950 p-2 rounded"><span>Chemistry (Core Weight 30%)</span><span class="text-teal-400 font-bold">Calculated</span></div>
-                        <div class="flex justify-between items-center bg-slate-950 p-2 rounded"><span>Mathematics (Core Weight 40%)</span><span class="text-teal-400 font-bold">Calculated</span></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 15. EXAM PORTAL PASS GEN -->
-            <div id="tool-password" class="tool-content tool-hidden max-w-md mx-auto">
-                <div class="glass-card space-y-4">
-                    <h3 class="text-xl font-bold text-amber-400">🔑 Portal Alphanumeric Cryptic Key</h3>
-                    <button onclick="genSecPass()" class="w-full py-2 bg-amber-600 hover:bg-amber-500 text-slate-950 font-bold text-xs rounded">Forge Alphanumeric Key</button>
-                    <input type="text" id="passOut" readonly class="w-full bg-slate-950 border border-slate-800 text-center font-mono p-2 rounded text-amber-400 font-bold select-all">
-                </div>
-            </div>
-
-            <!-- 16. GEOMETRY CANVAS BLOCK -->
-            <div id="tool-draw" class="tool-content tool-hidden space-y-4">
-                <div class="glass-card">
-                    <h3 class="text-xl font-bold text-indigo-400 mb-2">🎨 Mathematical Geometry Sketch Canvas</h3>
-                    <canvas id="geoCanvas" width="500" height="200" class="w-full bg-slate-950 rounded-lg border border-slate-800 cursor-crosshair"></canvas>
-                    <button onclick="document.getElementById('geoCanvas').getContext('2d').clearRect(0,0,500,200)" class="px-3 py-1 bg-slate-800 text-xs rounded text-slate-400 hover:text-white">Wipe Grid Canvas</button>
-                </div>
-            </div>
-
-            <!-- 17. HOSTEL BUDGET TRACKER -->
-            <div id="tool-expense" class="tool-content tool-hidden max-w-md mx-auto">
-                <div class="glass-card space-y-4">
-                    <h3 class="text-xl font-bold text-emerald-400">💰 Pocket Money Expense Tracker</h3>
-                    <div class="flex gap-2">
-                        <input type="text" id="expName" placeholder="Item (e.g., Books)" class="bg-slate-950 border border-slate-800 rounded p-2 text-xs flex-1">
-                        <input type="number" id="expAmt" placeholder="INR" class="bg-slate-950 border border-slate-800 rounded p-2 text-xs w-20">
-                        <button onclick="addExpense()" class="bg-emerald-600 text-xs px-3 rounded font-bold">Log</button>
-                    </div>
-                    <div class="bg-slate-950 p-3 rounded font-mono text-xs text-slate-400">
-                        Total Balance Matrix Logged: <span class="text-emerald-400 font-bold" id="expTotal">₹0</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 18. JEE/NEET QUOTE BOOSTER -->
-            <div id="tool-quote" class="tool-content tool-hidden max-w-md mx-auto">
-                <div class="glass-card text-center p-6 space-y-4">
-                    <p id="quoteBox" class="text-base italic text-indigo-300 font-medium">"Arise, awake, and stop not till the goal is reached."</p>
-                    <button onclick="nextQuote()" class="px-4 py-1.5 bg-slate-950 border border-slate-800 text-xs rounded text-slate-400 hover:text-slate-200">Load Next Booster</button>
-                </div>
-            </div>
-
-            <!-- 19. GLOBAL COLLEGE TIMEZONE -->
-            <div id="tool-timeconv" class="tool-content tool-hidden max-w-md mx-auto">
-                <div class="glass-card space-y-3">
-                    <h3 class="text-xl font-bold text-sky-400">🕒 Foreign Admissions Academic Clock</h3>
-                    <div class="space-y-1 font-mono text-xs text-slate-400">
-                        <div class="flex justify-between bg-slate-950 p-2 rounded"><span>Indian Standard (IST)</span><span class="text-sky-400 font-bold" id="clockIst">--:--</span></div>
-                        <div class="flex justify-between bg-slate-950 p-2 rounded"><span>US Eastern (EST)</span><span class="text-slate-300" id="clockEst">--:--</span></div>
-                        <div class="flex justify-between bg-slate-950 p-2 rounded"><span>United Kingdom (GMT)</span><span class="text-slate-300" id="clockGmt">--:--</span></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 20. PHYSICS UNIT CONVERTER -->
-            <div id="tool-unit" class="tool-content tool-hidden max-w-md mx-auto">
-                <div class="glass-card space-y-4">
-                    <h3 class="text-xl font-bold text-orange-400">📏 SI Physics Mechanics Unit Scaler</h3>
-                    <div class="flex gap-2 items-center font-mono text-xs">
-                        <input type="number" id="unitVal" value="1" class="bg-slate-950 border border-slate-800 rounded p-2 w-20 text-center">
-                        <span>Joules (J) =</span>
-                        <span id="unitRes" class="text-orange-400 font-bold text-sm">1e+7</span>
-                        <span>Ergs</span>
-                    </div>
-                    <button onclick="document.getElementById('unitRes').textContent = (document.getElementById('unitVal').value * 10000000).toExponential(2)" class="w-full py-1.5 bg-orange-600 font-bold text-xs rounded">Compute Dimension Scalar</button>
-                </div>
-            </div>
-
-            <!-- 21. TEXT CASE SWITCHER -->
-            <div id="tool-case" class="tool-content tool-hidden space-y-4">
-                <div class="glass-card">
-                    <h3 class="text-xl font-bold text-fuchsia-400 mb-2">🔠 Title & Upper Case Node Modulator</h3>
-                    <input type="text" id="caseInput" placeholder="Enter standard text payload..." class="w-full bg-slate-950 border border-slate-800 rounded p-2 text-sm mb-2">
-                    <div class="flex gap-2">
-                        <button onclick="document.getElementById('caseInput').value = document.getElementById('caseInput').value.toUpperCase()" class="px-3 py-1 bg-slate-950 border border-slate-800 text-xs rounded text-fuchsia-400 font-mono">UPPERCASE</button>
-                        <button onclick="document.getElementById('caseInput').value = document.getElementById('caseInput').value.toLowerCase()" class="px-3 py-1 bg-slate-950 border border-slate-800 text-xs rounded text-fuchsia-400 font-mono">lowercase</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 22. QUICK MARK PERCENTAGE -->
-            <div id="tool-percent" class="tool-content tool-hidden max-w-md mx-auto">
-                <div class="glass-card space-y-3">
-                    <h3 class="text-xl font-bold text-cyan-400">📊 Quick Mock Metric Aggregator</h3>
-                    <div class="grid grid-cols-2 gap-2">
-                        <input type="number" id="marksObt" placeholder="Marks Secured" class="bg-slate-950 border border-slate-800 rounded p-2 text-xs">
-                        <input type="number" id="marksTot" placeholder="Maximum Scale" class="bg-slate-950 border border-slate-800 rounded p-2 text-xs">
-                    </div>
-                    <button onclick="calcPctNode()" class="w-full py-1.5 bg-cyan-600 font-bold text-xs rounded">Extract Fractional Percentage</button>
-                    <div id="pctResOut" class="text-center font-mono text-xl font-bold text-cyan-400 hidden">0.00%</div>
-                </div>
-            </div>
-
-            <!-- 23. VIVA ROLL NO PICK -->
-            <div id="tool-random" class="tool-content tool-hidden max-w-md mx-auto text-center">
-                <div class="glass-card space-y-4">
-                    <h3 class="text-xl font-bold text-yellow-400 text-left">🎲 Viva Arbitrary Roll Allocator</h3>
-                    <div class="text-4xl font-black font-mono text-yellow-400" id="rollOut">#00</div>
-                    <button onclick="document.getElementById('rollOut').textContent = '#' + Math.floor(Math.random() * 60 + 1)" class="w-full py-2 bg-slate-950 hover:bg-slate-900 border border-slate-800 rounded font-bold text-xs text-yellow-400">Draw Next Integer Token</button>
-                </div>
-            </div>
-
-            <!-- 24. STUDENT FITNESS BMI -->
-            <div id="tool-bmi" class="tool-content tool-hidden max-w-md mx-auto">
-                <div class="glass-card space-y-4">
-                    <h3 class="text-xl font-bold text-rose-400">🏃 Hostel Health Index BMI Evaluator</h3>
-                    <div class="grid grid-cols-2 gap-2 font-mono text-xs">
-                        <input type="number" id="bmiW" placeholder="Weight (kg)" class="bg-slate-950 border border-slate-800 rounded p-2">
-                        <input type="number" id="bmiH" placeholder="Height (cm)" class="bg-slate-950 border border-slate-800 rounded p-2">
-                    </div>
-                    <button onclick="runBmiCalc()" class="w-full py-2 bg-rose-600 font-bold text-xs rounded">Compute Mass Scalar</button>
-                    <div id="bmiOut" class="text-center font-mono text-sm text-slate-300 hidden">BMI Metric Matrix Score: <span class="text-rose-400 font-bold" id="bmiVal">22.4</span></div>
-                </div>
-            </div>
-
-            <!-- 25. LIVE MARKDOWN RENDER -->
-            <div id="tool-markdown" class="tool-content tool-hidden space-y-4">
-                <div class="glass-card">
-                    <h3 class="text-xl font-bold text-violet-400 mb-2">💻 Interactive Plaintext Editor Matrix</h3>
-                    <textarea oninput="document.getElementById('mdOut').textContent = this.value" placeholder="# Heading
-Type clean text block notes..." class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2.5 h-24 text-xs font-mono focus:outline-none mb-2"></textarea>
-                    <div id="mdOut" class="bg-slate-950 p-3 rounded border border-slate-900 text-xs font-mono text-slate-400 min-h-[50px] whitespace-pre-wrap"></div>
-                </div>
-            </div>
-
-        </main>
-    </div>
-
-    <!-- Script Block Core Handling Routing And Utilities Client Side -->
-    <script>
-        // Tab switching engine
-        function switchTool(toolId) {
-            document.querySelectorAll('.tool-content').forEach(el => el.classList.add('tool-hidden'));
-            document.getElementById(toolId).classList.remove('tool-hidden');
-            
-            document.querySelectorAll('#toolMenu button').forEach(btn => {
-                btn.className = "w-full text-left px-3 py-2 rounded-lg text-sm font-medium text-slate-400 hover:bg-slate-800/50 hover:text-slate-200";
-            });
-            event.currentTarget.className = "w-full text-left px-3 py-2 rounded-lg text-sm font-medium bg-slate-800 text-cyan-400 border border-slate-700";
-            if(toolId === 'tool-draw') initCanvas();
-        }
-
-        // AI Background Remover Logic
-        function runBgRemover(e) {
-            const file = e.target.files[0];
-            if(!file) return;
-            document.getElementById('bgWorkspace').classList.remove('hidden');
-            document.getElementById('bgSource').src = URL.createObjectURL(file);
-            const loader = document.getElementById('bgLoading');
-            const res = document.getElementById('bgResult');
-            loader.classList.remove('hidden'); res.classList.add('opacity-30');
-            setTimeout(() => {
-                loader.classList.add('hidden'); res.classList.remove('opacity-30');
-                res.src = document.getElementById('bgSource').src;
-                res.style.filter = "contrast(1.1) brightness(1.02) saturate(1.05)";
-            }, 1200);
-        }
-        function downloadPng() { alert("PNG format conversion ready. Downloading transparent node layer asset."); }
-
-        // Calculator Logic
-        let cState = '';
-        function pressCalc(v) { cState += v; document.getElementById('calcDisplay').textContent = cState; }
-        function clearCalc() { cState = ''; document.getElementById('calcDisplay').textContent = '0'; document.getElementById('calcHistory').textContent = ''; }
-        function backspaceCalc() { cState = cState.slice(0, -1); document.getElementById('calcDisplay').textContent = cState || '0'; }
-        function evalCalc() {
-            try {
-                let r = eval(cState);
-                document.getElementById('calcHistory').textContent = cState;
-                document.getElementById('calcDisplay').textContent = Number(r.toFixed(5));
-                cState = r.toString();
-            } catch(e) { document.getElementById('calcDisplay').textContent = 'Syntax Error'; cState = ''; }
-        }
-
-        // Note Local Storage Automation
-        const nT = document.getElementById('noteTitle');
-        const nC = document.getElementById('noteContent');
-        function autoSaveNote() {
-            localStorage.setItem('pro_suite_title', nT.value);
-            localStorage.setItem('pro_suite_content', nC.value);
-            document.getElementById('noteStatus').textContent = "Autosaved text chunk matrix at " + new Date().toLocaleTimeString();
-        }
-        nT.addEventListener('input', autoSaveNote); nC.addEventListener('input', autoSaveNote);
-        window.addEventListener('DOMContentLoaded', () => {
-            if(localStorage.getItem('pro_suite_title')) nT.value = localStorage.getItem('pro_suite_title');
-            if(localStorage.getItem('pro_suite_content')) nC.value = localStorage.getItem('pro_suite_content');
-            updateClocks(); setInterval(updateClocks, 60000);
-        });
-        function clearNoteStorage() { nT.value = ''; nC.value = ''; localStorage.clear(); }
-
-        // Pomodoro Clock Engine
-        let pTimer; let pRunning = false; let pLeft = 25 * 60;
-        function togglePomo() {
-            const btn = document.getElementById('pomoBtn');
-            if(pRunning) { clearInterval(pTimer); btn.textContent = "Resume"; }
-            else {
-                pTimer = setInterval(() => {
-                    if(pLeft > 0) { pLeft--; let m = Math.floor(pLeft/60).toString().padStart(2,'0'); let s = (pLeft%60).toString().padStart(2,'0'); document.getElementById('pomoDisplay').textContent = m+":"+s; }
-                    else { clearInterval(pTimer); alert("Syllabus focus slot done! Take a break."); resetPomo(); }
-                }, 1000);
-                btn.textContent = "Pause";
-            }
-            pRunning = !pRunning;
-        }
-        function resetPomo() { clearInterval(pTimer); pRunning = false; pLeft = 25 * 60; document.getElementById('pomoDisplay').textContent = "25:00"; document.getElementById('pomoBtn').textContent = "Start Session"; }
-        function toggleSynth(t) { let b = document.getElementById('synth'+t.charAt(0).toUpperCase()+t.slice(1)); let active = b.querySelector('span:last-child').textContent === 'Off'; b.querySelector('span:last-child').textContent = active ? 'On' : 'Off'; b.classList.toggle('border-amber-500'); }
-
-        // CGPA Conversion Formula
-        function runCgpaConvert() {
-            let v = parseFloat(document.getElementById('cgpaInput').value);
-            if(isNaN(v) || v < 0 || v > 10) { alert("Enter valid 10-point scale integer metric."); return; }
-            document.getElementById('cgpaResultBox').classList.remove('hidden');
-            document.getElementById('cgpaPct').textContent = (v * 9.5).toFixed(1) + "%";
-        }
-
-        // Chronological Age Math
-        function runAgeCalc() {
-            let b = document.getElementById('birthDate').value; if(!b) return;
-            let diff = Date.now() - new Date(b).getTime(); let ageDate = new Date(diff);
-            document.getElementById('ageResultBox').classList.remove('hidden');
-            document.getElementById('ageYears').textContent = Math.abs(ageDate.getUTCFullYear() - 1970);
-            document.getElementById('ageMonths').textContent = ageDate.getUTCMonth();
-            document.getElementById('ageDays').textContent = ageDate.getUTCDate() - 1;
-        }
-
-        // Active Recall Deck Core logic
-        let deck = [];
-        function addFlashcard() {
-            let q = document.getElementById('fcQ').value; let a = document.getElementById('fcA').value;
-            if(!q || !a) return; deck.push({q: q, a: a}); document.getElementById('fcText').textContent = "Card cached! Total deck: " + deck.length; document.getElementById('fcQ').value=''; document.getElementById('fcA').value='';
-        }
-        let fcSide = true;
-        function flipFlashcard() {
-            if(deck.length === 0) return;
-            let lbl = document.getElementById('fcSideLabel'); let txt = document.getElementById('fcText');
-            if(fcSide) { lbl.textContent = "Answer Layer Node"; txt.textContent = deck[0].a; }
-            else { lbl.textContent = "Question Layer Node"; txt.textContent = deck[0].q; }
-            fcSide = !fcSide;
-        }
-
-        // Text analytics engine
-        function countTextMetrics(val) {
-            document.getElementById('charCount').textContent = val.length;
-            document.getElementById('wordCount').textContent = val.trim() === "" ? 0 : val.trim().split(/\s+/).length;
-        }
-
-        // Form Payload Handlers Mock
-        function generatePdfMock() { alert("Local Canvas Image Context packed successfully into browser download node."); }
-        function mockCompress() { document.getElementById('compStatus').classList.remove('hidden'); }
-        function addTodoItem() { let v = document.getElementById('todoInput').value; if(!v) return; let li = document.createElement('li'); li.className="p-2 bg-slate-950 rounded flex justify-between items-center border border-slate-900"; li.innerHTML="<span>⬜ "+v+"</span><button onclick='this.parentElement.remove()' class='text-red-400 text-xs'>✕</button>"; document.getElementById('todoList').appendChild(li); document.getElementById('todoInput').value=''; }
-        function genSecPass() { document.getElementById('passOut').value = "STU_" + Math.random().toString(36).substring(2,10).toUpperCase(); }
-        
-        // Canvas Vector Context
-        function initCanvas() {
-            let canvas = document.getElementById('geoCanvas'); let ctx = canvas.getContext('2d');
-            ctx.strokeStyle = '#6366f1'; ctx.lineWidth = 2;
-            canvas.onmousedown = (e) => {
-                ctx.beginPath(); ctx.moveTo(e.offsetX, e.offsetY);
-                canvas.onmousemove = (ev) => { ctx.lineTo(ev.offsetX, ev.offsetY); ctx.stroke(); };
-                canvas.onmouseup = () => { canvas.onmousemove = null; };
-            };
-        }
-
-        // Budget Engine
-        let totalExp = 0;
-        function addExpense() {
-            let a = parseInt(document.getElementById('expAmt').value); if(isNaN(a)) return;
-            totalExp += a; document.getElementById('expTotal').textContent = "₹" + totalExp;
-            document.getElementById('expAmt').value = ''; document.getElementById('expName').value = '';
-        }
-
-        // Quotes Database Nodes
-        const quotes = [
-            ""Arise, awake, and stop not till the goal is reached." - Swami Vivekananda",
-            ""Success is not final, failure is not fatal: it is the courage to continue that counts." - Churchill",
-            ""Be the change that you wish to see in the world." - Mahatma Gandhi",
-            ""Believe you can and you're halfway there." - Roosevelt"
-        ];
-        function nextQuote() { document.getElementById('quoteBox').textContent = quotes[Math.floor(Math.random() * quotes.length)]; }
-
-        // Clock Synchronization
-        function updateClocks() {
-            let d = new Date();
-            document.getElementById('clockIst').textContent = d.toLocaleTimeString('en-IN', {hour:'2-digit', minute:'2-digit'});
-            document.getElementById('clockEst').textContent = new Date(d.toLocaleString("en-US", {timeZone: "America/New_York"})).toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'});
-            document.getElementById('clockGmt').textContent = new Date(d.toLocaleString("en-US", {timeZone: "Europe/London"})).toLocaleString([], {hour:'2-digit', minute:'2-digit'});
-        }
-
-        // Mock Metrics Aggregation
-        function calcPctNode() {
-            let o = parseFloat(document.getElementById('marksObt').value);
-            let t = parseFloat(document.getElementById('marksTot').value);
-            if(!o || !t) return; let box = document.getElementById('pctResOut');
-            box.classList.remove('hidden'); box.textContent = ((o / t) * 100).toFixed(2) + "%";
-        }
-        function runBmiCalc() {
-            let w = parseFloat(document.getElementById('bmiW').value);
-            let h = parseFloat(document.getElementById('bmiH').value)/100;
-            if(!w || !h) return; document.getElementById('bmiOut').classList.remove('hidden');
-            document.getElementById('bmiVal').textContent = (w / (h*h)).toFixed(1);
-        }
-    </script>
-</body>
-</html>
